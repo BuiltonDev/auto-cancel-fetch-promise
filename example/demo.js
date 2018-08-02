@@ -11,14 +11,17 @@ class FetchComponent extends Component {
     };
   }
   componentDidMount() {
+    // Fetch test
     this.props.fetch("https://nghttp2.org/httpbin/delay/2").then((fetchResponse) => {
       fetchResponse.json().then((fetchJson) => {
         console.log(fetchJson);
         this.setState({ fetchJson });
       }).catch(console.log);
     }).catch(console.log);
+
+    // Promise wrapper test
     const fn = new Promise((resolve) => setTimeout(resolve, 3000));
-    this.props.promise(fn).then(() => {
+    this.props.promiseWrapper(fn).then(() => {
       this.setState({ promiseResult: true });
     }).catch(console.log);
   };
@@ -36,7 +39,6 @@ class FetchComponent extends Component {
 
 FetchComponent.defaultProps = {
   fetch: fetch,
-  promise: Promise,
 };
 
 const FetchComponentHoc = withCancellableFetch(FetchComponent);
