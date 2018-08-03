@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import withCancellableFetch from "../src/index.js";
+import withCancellableFetch from "auto-cancel-fetch-promises";
 
 class FetchComponent extends Component {
   constructor(props) {
@@ -71,5 +70,4 @@ class App extends Component {
   }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+export default App;
